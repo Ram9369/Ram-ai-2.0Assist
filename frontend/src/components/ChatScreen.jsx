@@ -52,7 +52,8 @@ export default function ChatScreen() {
 
   useEffect(() => {
     // Initialize Socket.io connection
-    const socket = io('http://localhost:3000', {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+    const socket = io(backendUrl, {
       reconnection: true,
       reconnectionDelay: 1000,
       reconnectionDelayMax: 5000,

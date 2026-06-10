@@ -10,7 +10,7 @@ const { generateResponse } = require("./src/service/ai.service")
 const httpServer=createServer(app)
 const io=new Server(httpServer,{
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:3000"],
+    origin: ["*"],
     methods: ["GET", "POST"]
   }
 })
@@ -45,7 +45,8 @@ io.on("connection",(socket)=>{
 });
 })
 
-httpServer.listen(3000,()=>{
-    console.log("Server is running on port 3000")
-})  
+const PORT = process.env.PORT || 3000;
 
+httpServer.listen(PORT, () => {
+    console.log(`Server running on ${PORT}`);
+});
