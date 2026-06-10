@@ -8,10 +8,20 @@ const { generateResponse } = require("./src/service/ai.service")
 
 
 const httpServer=createServer(app)
+
+// CORS origins configuration
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "http://localhost:4173",
+  process.env.FRONTEND_URL || ""
+].filter(Boolean)
+
 const io=new Server(httpServer,{
   cors: {
-    origin: ["*"],
-    methods: ["GET", "POST"]
+    origin: process.env.NODE_ENV === "production" ? allowedOrigins : "*",
+    methods: ["GET", "POST"],
+    credentials: true
   }
 })
 

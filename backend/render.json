@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm install",
+  "startCommand": "node server.js",
+  "envs": [
+    {
+      "key": "GEMINI_API_KEY",
+      "value": "NEEDS_TO_BE_SET"
+    },
+    {
+      "key": "PORT",
+      "value": "10000"
+    },
+    {
+      "key": "NODE_ENV",
+      "value": "production"
+    }
+  ]
+}
